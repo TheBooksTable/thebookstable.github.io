@@ -1,0 +1,42 @@
+{
+  "name": "CalcHub - Financial & Health Calculators",
+  "short_name": "CalcHub",
+  "description": "Comprehensive calculator toolkit for financial, health, and conversion needs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "health", "utilities"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Currency Converter",
+      "short_name": "Currency",
+      "description": "Convert currencies",
+      "url": "/?calculator=currency",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "BMI Calculator",
+      "short_name": "BMI",
+      "description": "Calculate BMI",
+      "url": "/?calculator=bmi",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

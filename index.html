@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive financial, health, and conversion calculators with a beautiful, modern interface">
+    <title>CalcHub - Financial & Health Calculators</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <!-- PWA Support -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#667eea">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CalcHub">
+
+<!-- PDF Export Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Chart Library for BMI Visualization -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<!-- Translations -->
+<script src="translations.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-calculator"></i>
+                    <span>CalcHub</span>
+                </div>
+                
+                <nav class="nav" id="nav">
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#financial" class="nav-link">Financial</a></li>
+                        <li><a href="#health" class="nav-link">Health</a></li>
+                        <li><a href="#converters" class="nav-link">Converters</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Your Ultimate Calculator Hub</h1>
+                <p class="hero-subtitle">Financial planning, health tracking, and conversions - all in one beautiful place</p>
+                <div class="hero-buttons">
+                    <a href="#financial" class="btn btn-primary">Get Started</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-stats slide-up">
+                <div class="stat-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>10+</h3>
+                    <p>Calculators</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3>100K+</h3>
+                    <p>Users</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>100%</h3>
+                    <p>Mobile Ready</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space 1 -->
+    <div class="ad-container">
+        <div class="ad-placeholder">
+            <p>Advertisement</p>
+        </div>
+    </div>
+
+    <!-- Financial Calculators Section -->
+    <section class="section" id="financial">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Financial Calculators</h2>
+                <p class="section-subtitle">Make informed financial decisions with our powerful tools</p>
+            </div>
+            
+            <div class="calculator-grid">
+                <div class="calculator-card slide-up" data-calculator="currency">
+                    <div class="calculator-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Currency Converter</h3>
+                    <p>Real-time currency exchange rates for 150+ currencies</p>
+                    <button class="btn btn-calc">Open Calculator</button>
+                </div>
+
+                <div class="calculator-card slide-up" data-calculator="inflation">
+                    <div class="calculator-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Inflation Calculator</h3>
+                    <p>Calculate purchasing power changes over time</p>
+                    <button class="btn btn-calc">Open Calculator</button>
+                </div>
+
+                <div class="calculator-card slide-up" data-calculator="loan">
+                    <div class="calculator-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Loan Calculator</h3>
+                    <p>Calculate monthly payments and amortization schedules</p>
+                    <button class="btn btn-calc">Open Calculator</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health & Fitness Section -->
+    <section class="section section-alt" id="health">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Health & Fitness</h2>
+                <p class="section-subtitle">Track your health goals with precision</p>
+            </div>
+            
+            <div class="calculator-grid">
+                <div class="calculator-card slide-up" data-calculator="bmr">
+                    <div class="calculator-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>BMR/Calorie Calculator</h3>
+                    <p>Calculate your daily calorie needs based on activity</p>
+                    <button class="btn btn-calc">Open Calculator</button>
+                </div>
+
+                <div class="calculator-card slide-up" data-calculator="macro">
+                    <div class="calculator-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Macro Calculator</h3>
+                    <p>Get personalized macronutrient recommendations</p>
+                    <button class="btn btn-calc">Open Calculator</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space 2 -->
+    <div class="ad-container">
+        <div class="ad-placeholder">
+            <p>Advertisement</p>
+        </div>
+    </div>
+
+    <!-- Converters Section -->
+    <section class="section" id="converters">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Universal Converters</h2>
+                <p class="section-subtitle">Convert units, time zones, and data sizes instantly</p>
+            </div>
+            
+            <div class="calculator-grid">
+                <div class="calculator-card slide-up" data-calculator="unit">
+                    <div class="calculator-icon">
+                        <i class="fas fa-ruler"></i>
+                    </div>
+                    <h3>Unit Converter</h3>
+                    <p>Convert length, weight, temperature, and more</p>
+                    <button class="btn btn-calc">Open Calculator</button>
+                </div>
+
+                <div class="calculator-card slide-up" data-calculator="timezone">
+                    <div class="calculator-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Time Zone Converter</h3>
+                    <p>Plan international meetings with ease</p>
+                    <button class="btn btn-calc">Open Calculator</button>
+                </div>
+
+                <div class="calculator-card slide-up" data-calculator="data">
+                    <div class="calculator-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Size Converter</h3>
+                    <p>Convert between bytes, KB, MB, GB, and more</p>
+                    <button class="btn btn-calc">Open Calculator</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-alt" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>About CalcHub</h2>
+                    <p>CalcHub is your comprehensive toolkit for everyday calculations. From financial planning to health tracking, we provide accurate, easy-to-use calculators with a beautiful, modern interface.</p>
+                    <p>Our mission is to make complex calculations simple and accessible to everyone, anywhere, on any device.</p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% Free to Use</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>No Registration Required</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Privacy Focused</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Regular Updates</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image slide-up">
+                    <div class="image-placeholder">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CalcHub</h4>
+                    <p>Your ultimate calculator hub for financial, health, and conversion needs.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#financial">Financial</a></li>
+                        <li><a href="#health">Health</a></li>
+                        <li><a href="#converters">Converters</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#disclaimer">Disclaimer</a></li>
+
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Get updates on new calculators and features</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 CalcHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Currency Converter Modal -->
+    <div class="modal" id="currencyModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2><i class="fas fa-exchange-alt"></i> Currency Converter</h2>
+            
+            <div class="calculator-body">
+                <div class="form-group">
+                    <label for="currencyAmount">Amount</label>
+                    <input type="number" id="currencyAmount" placeholder="100" value="100">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fromCurrency">From</label>
+                        <select id="fromCurrency">
+                            <option value="USD">USD - US Dollar</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                            <option value="JPY">JPY - Japanese Yen</option>
+                            <option value="AUD">AUD - Australian Dollar</option>
+                            <option value="CAD">CAD - Canadian Dollar</option>
+                            <option value="CHF">CHF - Swiss Franc</option>
+                            <option value="CNY">CNY - Chinese Yuan</option>
+                            <option value="INR">INR - Indian Rupee</option>
+                            <option value="MXN">MXN - Mexican Peso</option>
+                        </select>
+                    </div>
+                    
+                    <button class="swap-btn" id="swapCurrency" aria-label="Swap currencies">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    
+                    <div class="form-group">
+                        <label for="toCurrency">To</label>
+                        <select id="toCurrency">
+                            <option value="USD">USD - US Dollar</option>
+                            <option value="EUR" selected>EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                            <option value="JPY">JPY - Japanese Yen</option>
+                            <option value="AUD">AUD - Australian Dollar</option>
+                            <option value="CAD">CAD - Canadian Dollar</option>
+                            <option value="CHF">CHF - Swiss Franc</option>
+                            <option value="CNY">CNY - Chinese Yuan</option>
+                            <option value="INR">INR - Indian Rupee</option>
+                            <option value="MXN">MXN - Mexican Peso</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="convertCurrency">
+                    <i class="fas fa-calculator"></i> Convert
+                </button>
+                
+                <div class="result-box" id="currencyResult"></div>
+                
+                <div class="rate-info" id="rateInfo"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inflation Calculator Modal -->
+    <div class="modal" id="inflationModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2><i class="fas fa-chart-line"></i> Inflation Calculator</h2>
+            
+            <div class="calculator-body">
+                <div class="form-group">
+                    <label for="inflationAmount">Initial Amount ($)</label>
+                    <input type="number" id="inflationAmount" placeholder="1000" value="1000">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="startYear">Start Year</label>
+                        <input type="number" id="startYear" placeholder="2000" value="2000" min="1900" max="2024">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="endYear">End Year</label>
+                        <input type="number" id="endYear" placeholder="2024" value="2024" min="1900" max="2024">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inflationRate">Average Annual Inflation Rate (%)</label>
+                    <input type="number" id="inflationRate" placeholder="3.0" value="3.0" step="0.1">
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="calculateInflation">
+                    <i class="fas fa-calculator"></i> Calculate
+                </button>
+                
+                <div class="result-box" id="inflationResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loan Calculator Modal -->
+    <div class="modal" id="loanModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2><i class="fas fa-home"></i> Loan/Mortgage Calculator</h2>
+            
+            <div class="calculator-body">
+                <div class="form-group">
+                    <label for="loanAmount">Loan Amount ($)</label>
+                    <input type="number" id="loanAmount" placeholder="200000" value="200000">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="interestRate">Interest Rate (%)</label>
+                        <input type="number" id="interestRate" placeholder="4.5" value="4.5" step="0.1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loanTerm">Loan Term (years)</label>
+                        <input type="number" id="loanTerm" placeholder="30" value="30">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="calculateLoan">
+                    <i class="fas fa-calculator"></i> Calculate
+                </button>
+                
+                <div class="result-box" id="loanResult"></div>
+                
+                <div class="amortization" id="amortizationSchedule"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BMR/Calorie Calculator Modal -->
+    <div class="modal" id="bmrModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2><i class="fas fa-heartbeat"></i> BMR/Calorie Calculator</h2>
+            
+            <div class="calculator-body">
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="male" checked>
+                            <span>Male</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="female">
+                            <span>Female</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age">Age (years)</label>
+                        <input type="number" id="age" placeholder="30" value="30">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" placeholder="70" value="70">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" placeholder="170" value="170">
+                </div>
+                
+                <div class="form-group">
+                    <label for="activityLevel">Activity Level</label>
+                    <select id="activityLevel">
+                        <option value="1.2">Sedentary (little or no exercise)</option>
+                        <option value="1.375">Lightly active (1-3 days/week)</option>
+                        <option value="1.55" selected>Moderately active (3-5 days/week)</option>
+                        <option value="1.725">Very active (6-7 days/week)</option>
+                        <option value="1.9">Extremely active (physical job & exercise)</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="calculateBMR">
+                    <i class="fas fa-calculator"></i> Calculate
+                </button>
+                
+                <div class="result-box" id="bmrResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Macro Calculator Modal -->
+    <div class="modal" id="macroModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2><i class="fas fa-dumbbell"></i> Macro Calculator</h2>
+            
+            <div class="calculator-body">
+                <div class="form-group">
+                    <label>Goal</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="goal" value="loss" checked>
+                            <span>Weight Loss</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="goal" value="maintain">
+                            <span>Maintain</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="goal" value="gain">
+                            <span>Muscle Gain</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="macroCalories">Daily Calorie Target</label>
+                    <input type="number" id="macroCalories" placeholder="2000" value="2000">
+                    <small>Use BMR calculator to find your target</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="macroWeight">Body Weight (kg)</label>
+                    <input type="number" id="macroWeight" placeholder="70" value="70">
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="calculateMacro">
+                    <i class="fas fa-calculator"></i> Calculate Macros
+                </button>
+                
+                <div class="result-box" id="macroResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit Converter Modal -->
+    <div class="modal" id="unitModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2><i class="fas fa-ruler"></i> Unit Converter</h2>
+            
+            <div class="calculator-body">
+                <div class="form-group">
+                    <label for="unitCategory">Category</label>
+                    <select id="unitCategory">
+                        <option value="length">Length</option>
+                        <option value="weight">Weight</option>
+                        <option value="temperature">Temperature</option>
+                        <option value="area">Area</option>
+                        <option value="volume">Volume</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="unitValue">Value</label>
+                    <input type="number" id="unitValue" placeholder="1" value="1" step="any">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fromUnit">From</label>
+                        <select id="fromUnit"></select>
+                    </div>
+                    
+                    <button class="swap-btn" id="swapUnit" aria-label="Swap units">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    
+                    <div class="form-group">
+                        <label for="toUnit">To</label>
+                        <select id="toUnit"></select>
+                    </div>
+                </div>
+                
+                <div class="result-box" id="unitResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timezone Converter Modal -->
+    <div class="modal" id="timezoneModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2><i class="fas fa-globe"></i> Time Zone Converter</h2>
+            
+            <div class="calculator-body">
+                <div class="form-group">
+                    <label for="sourceTime">Time</label>
+                    <input type="datetime-local" id="sourceTime">
+                </div>
+                
+                <div class="form-group">
+                    <label for="sourceTimezone">From Timezone</label>
+                    <select id="sourceTimezone">
+                        <option value="-12">UTC-12:00 Baker Island</option>
+                        <option value="-11">UTC-11:00 American Samoa</option>
+                        <option value="-10">UTC-10:00 Hawaii</option>
+                        <option value="-9">UTC-09:00 Alaska</option>
+                        <option value="-8">UTC-08:00 Pacific Time</option>
+                        <option value="-7">UTC-07:00 Mountain Time</option>
+                        <option value="-6">UTC-06:00 Central Time</option>
+                        <option value="-5" selected>UTC-05:00 Eastern Time</option>
+                        <option value="-4">UTC-04:00 Atlantic Time</option>
+                        <option value="-3">UTC-03:00 Buenos Aires</option>
+                        <option value="-2">UTC-02:00 Mid-Atlantic</option>
+                        <option value="-1">UTC-01:00 Azores</option>
+                        <option value="0">UTC+00:00 London</option>
+                        <option value="1">UTC+01:00 Paris</option>
+                        <option value="2">UTC+02:00 Cairo</option>
+                        <option value="3">UTC+03:00 Moscow</option>
+                        <option value="4">UTC+04:00 Dubai</option>
+                        <option value="5">UTC+05:00 Pakistan</option>
+                        <option value="5.5">UTC+05:30 India</option>
+                        <option value="6">UTC+06:00 Bangladesh</option>
+                        <option value="7">UTC+07:00 Bangkok</option>
+                        <option value="8">UTC+08:00 Singapore</option>
+                        <option value="9">UTC+09:00 Tokyo</option>
+                        <option value="10">UTC+10:00 Sydney</option>
+                        <option value="11">UTC+11:00 Solomon Islands</option>
+                        <option value="12">UTC+12:00 Fiji</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="targetTimezone">To Timezone</label>
+                    <select id="targetTimezone">
+                        <option value="-12">UTC-12:00 Baker Island</option>
+                        <option value="-11">UTC-11:00 American Samoa</option>
+                        <option value="-10">UTC-10:00 Hawaii</option>
+                        <option value="-9">UTC-09:00 Alaska</option>
+                        <option value="-8">UTC-08:00 Pacific Time</option>
+                        <option value="-7">UTC-07:00 Mountain Time</option>
+                        <option value="-6">UTC-06:00 Central Time</option>
+                        <option value="-5">UTC-05:00 Eastern Time</option>
+                        <option value="-4">UTC-04:00 Atlantic Time</option>
+                        <option value="-3">UTC-03:00 Buenos Aires</option>
+                        <option value="-2">UTC-02:00 Mid-Atlantic</option>
+                        <option value="-1">UTC-01:00 Azores</option>
+                        <option value="0" selected>UTC+00:00 London</option>
+                        <option value="1">UTC+01:00 Paris</option>
+                        <option value="2">UTC+02:00 Cairo</option>
+                        <option value="3">UTC+03:00 Moscow</option>
+                        <option value="4">UTC+04:00 Dubai</option>
+                        <option value="5">UTC+05:00 Pakistan</option>
+                        <option value="5.5">UTC+05:30 India</option>
+                        <option value="6">UTC+06:00 Bangladesh</option>
+                        <option value="7">UTC+07:00 Bangkok</option>
+                        <option value="8">UTC+08:00 Singapore</option>
+                        <option value="9">UTC+09:00 Tokyo</option>
+                        <option value="10">UTC+10:00 Sydney</option>
+                        <option value="11">UTC+11:00 Solomon Islands</option>
+                        <option value="12">UTC+12:00 Fiji</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="convertTimezone">
+                    <i class="fas fa-calculator"></i> Convert
+                </button>
+                
+                <div class="result-box" id="timezoneResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Converter Modal -->
+    <div class="modal" id="dataModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h2><i class="fas fa-database"></i> Data Size Converter</h2>
+            
+            <div class="calculator-body">
+                <div class="form-group">
+                    <label for="dataValue">Value</label>
+                    <input type="number" id="dataValue" placeholder="1" value="1" step="any">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fromData">From</label>
+                        <select id="fromData">
+                            <option value="bit">Bit</option>
+                            <option value="byte">Byte</option>
+                            <option value="kb">Kilobyte (KB)</option>
+                            <option value="mb" selected>Megabyte (MB)</option>
+                            <option value="gb">Gigabyte (GB)</option>
+                            <option value="tb">Terabyte (TB)</option>
+                            <option value="pb">Petabyte (PB)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="swap-btn" id="swapData" aria-label="Swap data units">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    
+                    <div class="form-group">
+                        <label for="toData">To</label>
+                        <select id="toData">
+                            <option value="bit">Bit</option>
+                            <option value="byte">Byte</option>
+                            <option value="kb">Kilobyte (KB)</option>
+                            <option value="mb">Megabyte (MB)</option>
+                            <option value="gb" selected>Gigabyte (GB)</option>
+                            <option value="tb">Terabyte (TB)</option>
+                            <option value="pb">Petabyte (PB)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="result-box" id="dataResult"></div>
+                
+                <div class="conversion-table" id="dataConversionTable"></div>
+            </div>
+        </div>
+    </div>
+<!-- Privacy Policy Modal -->
+<div class="modal" id="privacyModal">
+    <div class="modal-content modal-large">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+        
+        <div class="legal-content">
+            <p><em>Last updated: January 2024</em></p>
+            
+            <h3>What We Collect</h3>
+            <p>CalcHub is designed with privacy in mind. We collect minimal data:</p>
+            <ul>
+                <li><strong>Local Storage:</strong> Your calculation history and theme preferences are stored locally on your device only</li>
+                <li><strong>No Personal Data:</strong> We don't collect names, emails, or any identifying information</li>
+                <li><strong>No Tracking:</strong> We don't use cookies or tracking scripts (except optional analytics if you consent)</li>
+            </ul>
+            
+            <h3>How We Use Data</h3>
+            <p>Any data stored is kept on your device and used only to:</p>
+            <ul>
+                <li>Remember your calculation history</li>
+                <li>Save your theme preference (dark/light mode)</li>
+                <li>Save your language preference</li>
+            </ul>
+            
+            <h3>Third-Party Services</h3>
+            <p>We use the following external services:</p>
+            <ul>
+                <li><strong>Frankfurter API:</strong> For real-time currency exchange rates (no data sent except currency codes)</li>
+                <li><strong>Font Awesome & Google Fonts:</strong> For icons and typography (standard web requests)</li>
+                <li><strong>Chart.js:</strong> For visualization (runs locally in your browser)</li>
+            </ul>
+            
+            <h3>Your Rights</h3>
+            <p>You have complete control over your data:</p>
+            <ul>
+                <li>Clear your history anytime using the "Clear All" button</li>
+                <li>Your browser controls all stored data</li>
+                <li>No account needed means no data to delete from our servers</li>
+            </ul>
+            
+            <h3>Data Security</h3>
+            <p>Since everything runs in your browser, your data never leaves your device unless you explicitly export it (like downloading a PDF).</p>
+            
+            <h3>Children's Privacy</h3>
+            <p>CalcHub is safe for all ages. We don't collect any data from anyone, including children.</p>
+            
+            <h3>Changes to This Policy</h3>
+            <p>We'll update this page if our privacy practices change. Check back occasionally.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Terms of Service Modal -->
+<div class="modal" id="termsModal">
+    <div class="modal-content modal-large">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <h2><i class="fas fa-file-contract"></i> Terms of Service</h2>
+        
+        <div class="legal-content">
+            <p><em>Last updated: January 2024</em></p>
+            
+            <h3>Agreement to Terms</h3>
+            <p>By using CalcHub, you agree to these terms. If you don't agree, please don't use the site. Simple as that.</p>
+            
+            <h3>What CalcHub Provides</h3>
+            <p>We provide free online calculators for:</p>
+            <ul>
+                <li>Financial calculations (currency, loans, investments, inflation)</li>
+                <li>Health metrics (BMI, BMR, calories, macros)</li>
+                <li>Unit conversions (length, weight, temperature, data, time zones)</li>
+            </ul>
+            
+            <h3>Use at Your Own Risk</h3>
+            <p>Important stuff to know:</p>
+            <ul>
+                <li>CalcHub is for informational purposes only</li>
+                <li>Don't make major financial or health decisions based solely on our calculators</li>
+                <li>Always consult professionals (financial advisors, doctors, etc.) for important decisions</li>
+                <li>We're not responsible for decisions you make using our tools</li>
+            </ul>
+            
+            <h3>Accuracy</h3>
+            <p>We try our best to be accurate, but:</p>
+            <ul>
+                <li>Currency rates come from third-party APIs and may have delays</li>
+                <li>Formulas are standard industry calculations but may not fit every situation</li>
+                <li>We're not liable for calculation errors or their consequences</li>
+            </ul>
+            
+            <h3>Acceptable Use</h3>
+            <p>Feel free to use CalcHub however you want, but please don't:</p>
+            <ul>
+                <li>Try to hack or break the site</li>
+                <li>Overload our servers with automated requests</li>
+                <li>Copy the entire site and claim it as yours</li>
+                <li>Use it for anything illegal</li>
+            </ul>
+            
+            <h3>Intellectual Property</h3>
+            <p>The CalcHub design and code are our work. The calculators themselves use standard mathematical formulas that belong to everyone.</p>
+            
+            <h3>No Warranties</h3>
+            <p>CalcHub is provided "as is" without any guarantees. We don't promise it'll always work perfectly or be available 24/7.</p>
+            
+            <h3>Limitation of Liability</h3>
+            <p>We're not responsible for any damages that might result from using CalcHub. Use common sense and verify important calculations.</p>
+            
+            <h3>Changes to Terms</h3>
+            <p>We can update these terms anytime. Major changes will be noted here with a new date.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Disclaimer Modal -->
+<div class="modal" id="disclaimerModal">
+    <div class="modal-content modal-large">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <h2><i class="fas fa-exclamation-triangle"></i> Disclaimer</h2>
+        
+        <div class="legal-content">
+            <p><em>Last updated: January 2024</em></p>
+            
+            <h3>General Disclaimer</h3>
+            <p>CalcHub provides calculators and tools for educational and informational purposes only. Nothing on this site constitutes professional advice.</p>
+            
+            <h3>Financial Disclaimer</h3>
+            <p><strong>Not Financial Advice:</strong></p>
+            <ul>
+                <li>Our financial calculators are educational tools, not financial advice</li>
+                <li>Don't make investment decisions based solely on our calculators</li>
+                <li>Past performance doesn't guarantee future results</li>
+                <li>Always consult a qualified financial advisor for personalized advice</li>
+                <li>We're not licensed financial advisors, accountants, or investment professionals</li>
+            </ul>
+            
+            <p><strong>Currency Rates:</strong></p>
+            <ul>
+                <li>Exchange rates are provided by third-party APIs and may be delayed</li>
+                <li>Rates shown are for reference only</li>
+                <li>Actual rates you get from banks/exchanges may differ</li>
+                <li>Always verify rates before making currency exchanges</li>
+            </ul>
+            
+            <h3>Health Disclaimer</h3>
+            <p><strong>Not Medical Advice:</strong></p>
+            <ul>
+                <li>BMI, BMR, and calorie calculators are general guidelines only</li>
+                <li>Everyone's body is different - these are averages</li>
+                <li>Don't start diets or exercise programs without consulting a doctor</li>
+                <li>We're not doctors, nutritionists, or certified health professionals</li>
+                <li>If you have health concerns, see a real healthcare provider</li>
+            </ul>
+            
+            <p><strong>Health Calculations:</strong></p>
+            <ul>
+                <li>BMI doesn't account for muscle mass, bone density, or body composition</li>
+                <li>Calorie needs vary based on many individual factors</li>
+                <li>Macro ratios are general recommendations, not personalized plans</li>
+            </ul>
+            
+            <h3>Accuracy Disclaimer</h3>
+            <p>While we strive for accuracy:</p>
+            <ul>
+                <li>Calculations may contain errors or bugs</li>
+                <li>Formulas are simplified versions of complex equations</li>
+                <li>Results should be verified through other sources</li>
+                <li>We're not liable for inaccurate calculations</li>
+            </ul>
+            
+            <h3>No Professional Relationship</h3>
+            <p>Using CalcHub doesn't create any professional relationship between you and us. We're just providing tools - you're responsible for how you use them.</p>
+            
+            <h3>External Links</h3>
+            <p>We may link to external websites. We're not responsible for their content or accuracy.</p>
+            
+            <h3>Use Your Judgment</h3>
+            <p>Bottom line: These are helpful tools, but they're not a substitute for professional advice. Use your brain, verify important calculations, and consult experts when needed.</p>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
